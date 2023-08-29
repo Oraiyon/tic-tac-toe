@@ -1,0 +1,78 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    --squareSize: 250px;
+    --markerSize: calc(var(--squareSize) * .9);
+}
+
+.container{
+    display: none;
+    grid-template-columns: repeat(3, 250px);
+    grid-template-rows: repeat(3, 250px);
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    width: fit-content;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.squares{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: var(--squareSize);
+    width: var(--squareSize);
+    border: 2px solid black;
+}
+
+.X{
+    height: var(--markerSize);
+    width: var(--markerSize);
+    position: relative;
+    transform: rotate(45deg);
+}
+
+.X::before, .X::after{
+    content: "";
+    position: absolute;
+    background-color: red;
+}
+
+.X::before{
+    left: 50%;
+    width: 30%;
+    margin-left: -15%;
+    height: 100%;
+}
+
+.X::after{
+    top: 50%;
+    height: 30%;
+    margin-top: -15%;
+    width: 100%;
+}
+
+.O{
+    height: var(--markerSize);
+    width: var(--markerSize);
+    border-radius: 50%;
+    border: 50px solid blue;
+}
+
+.choices{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+button{
+    height: var(--squareSize);
+    width: var(--squareSize);
+}
+
+.choices p{
+    align-self: center;
+}
