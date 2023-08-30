@@ -18,7 +18,6 @@ const gameBoardModule= (() => {
             squares.classList.add("squares");
             squares.id= index;
             container.appendChild(squares);
-            //
             result.innerText= `${currentMarker}'s Turn`;
             squares.addEventListener("click", placeMarker);
         });
@@ -30,9 +29,10 @@ const gameBoardModule= (() => {
         const cell= document.createElement("div");
         cell.classList.add(currentMarker);
         e.target.appendChild(cell);
-        //
+        gameBoard[e.target.id]= currentMarker;
         switchTurn();
         e.target.removeEventListener("click", placeMarker);
+        console.log(gameBoard);
     };
 
     const switchTurn= () =>{
