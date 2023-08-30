@@ -4,6 +4,9 @@
     box-sizing: border-box;
     --squareSize: 250px;
     --markerSize: calc(var(--squareSize) * .9);
+    color: white;
+    --primary: rgb(73, 73, 73);
+    --secondary: rgb(231, 18, 18);
 }
 
 body{
@@ -11,6 +14,7 @@ body{
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    background-color: black;
 }
 
 button{
@@ -18,6 +22,7 @@ button{
     border-radius: 8px;
     margin-top: 20px;
     font-size: 1.2rem;
+    background-color: var(--primary);
 }
 
 .container{
@@ -29,7 +34,7 @@ button{
     align-items: center;
     width: fit-content;
     margin: 0 auto;
-    border: 2px solid black;
+    border: 2px solid white;
 }
 
 .squares{
@@ -38,7 +43,8 @@ button{
     align-items: center;
     height: var(--squareSize);
     width: var(--squareSize);
-    border: 2px solid black;
+    border: 2px solid white;
+    background-color: var(--primary);
 }
 
 .X{
@@ -51,7 +57,7 @@ button{
 .X::before, .X::after{
     content: "";
     position: absolute;
-    background-color: red;
+    background-color: var(--secondary);
 }
 
 .X::before{
@@ -72,7 +78,7 @@ button{
     height: var(--markerSize);
     width: var(--markerSize);
     border-radius: 50%;
-    border: 50px solid blue;
+    border: 50px solid var(--secondary);
 }
 
 .result{

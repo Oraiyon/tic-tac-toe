@@ -2,7 +2,6 @@ const gameBoardModule= (() => {
     const container= document.querySelector(".container");
     const result= document.querySelector(".result");
     const gameBoard = ["", "", "", "", "", "", "", "", ""];
-    let winner = false;
 
     const createPlayer = (name, marker) => {
         return {name, marker};
@@ -11,6 +10,7 @@ const gameBoardModule= (() => {
     const playerOne= createPlayer("Player One", "X");
     const playerTwo= createPlayer("Player Two", "O");
 
+    let winner = false;
     let currentMarker= playerOne.marker;
     result.innerText= `${currentMarker}'s Turn`;
     
@@ -30,6 +30,7 @@ const gameBoardModule= (() => {
         const cell= document.createElement("div");
         cell.classList.add(currentMarker);
         e.target.appendChild(cell);
+        e.target.setAttribute("style", "background-color: black;");
         gameBoard[e.target.id]= currentMarker;
         checkWinner();
         e.target.removeEventListener("click", placeMarker);
@@ -67,7 +68,6 @@ const gameBoardModule= (() => {
         };
         if (winner === true){
             result.innerText= `${currentMarker} WINS`;
-
         } else if (winner === false && gameBoard.includes("")){
             switchTurn();
         } else {
