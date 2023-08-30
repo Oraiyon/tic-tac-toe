@@ -1,16 +1,15 @@
 const gameBoardModule= (() => {
     const container= document.querySelector(".container");
     const result= document.querySelector(".result");
+    const reset= document.querySelector(".reset");
+
     const gameBoard = ["", "", "", "", "", "", "", "", ""];
 
     const createPlayer = (name, marker) => {
         return {name, marker};
     };
-    
     const playerOne= createPlayer("Player One", "X");
     const playerTwo= createPlayer("Player Two", "O");
-
-    let winner = false;
     let currentMarker= playerOne.marker;
     result.innerText= `${currentMarker}'s Turn`;
     
@@ -22,8 +21,7 @@ const gameBoardModule= (() => {
             container.appendChild(squares);
             squares.addEventListener("click", placeMarker);
         });
-        const reset= document.querySelector(".reset");
-        reset.addEventListener("click", resetGame);
+        reset.addEventListener("click", () => location.reload());
     };
 
     const placeMarker = (e) => { 
@@ -42,6 +40,7 @@ const gameBoardModule= (() => {
         return currentMarker;
     };
 
+    let winner = false;
     const winCombos= [
         [0, 1, 2],
         [3, 4, 5],
@@ -73,10 +72,6 @@ const gameBoardModule= (() => {
         } else {
             result.innerText= "Draw";
         };
-    };
-
-    const resetGame = () =>{
-        location.reload();
     };
     return {displayBoard};
 })();
