@@ -2,6 +2,7 @@ const gameBoardModule= (() => {
     const container= document.querySelector(".container");
     const result= document.querySelector(".result");
     const gameBoard = ["", "", "", "", "", "", "", "", ""];
+    let winner = false;
 
     const createPlayer = (name, marker) => {
         return {name, marker};
@@ -11,6 +12,7 @@ const gameBoardModule= (() => {
     const playerTwo= createPlayer("Player Two", "O");
 
     let currentMarker= playerOne.marker;
+    result.innerText= `${currentMarker}'s Turn`;
     
     const displayBoard= () => {
         gameBoard.forEach((item, index) => {
@@ -18,7 +20,6 @@ const gameBoardModule= (() => {
             squares.classList.add("squares");
             squares.id= index;
             container.appendChild(squares);
-            result.innerText= `${currentMarker}'s Turn`;
             squares.addEventListener("click", placeMarker);
         });
         const reset= document.querySelector(".reset");
@@ -30,12 +31,11 @@ const gameBoardModule= (() => {
         cell.classList.add(currentMarker);
         e.target.appendChild(cell);
         gameBoard[e.target.id]= currentMarker;
-        switchTurn();
+        checkWinner();
         e.target.removeEventListener("click", placeMarker);
-        console.log(gameBoard);
     };
 
-    const switchTurn= () =>{
+    const switchTurn = () =>{
         (currentMarker === playerOne.marker) ? currentMarker = playerTwo.marker : currentMarker= playerOne.marker;
         result.innerText= `${currentMarker}'s Turn`;
         return currentMarker;
@@ -51,6 +51,29 @@ const gameBoardModule= (() => {
         [0, 4, 8],
         [2, 4, 6]
     ];
+    const checkWinner = () => {
+        for (let i= 0; i < winCombos.length; i++){
+            const combo= winCombos[i];
+            const cellA = gameBoard[combo[0]];
+            const cellB = gameBoard[combo[1]];
+            const cellC = gameBoard[combo[2]];
+            if (cellA === "" || cellB === "" || cellC === ""){
+                continue;
+            };
+            if (cellA === cellB && cellB === cellC){
+                winner= true;
+                break;
+            };
+        };
+        if (winner === true){
+            result.innerText= `${currentMarker} WINS`;
+
+        } else if (winner === false && gameBoard.includes("")){
+            switchTurn();
+        } else {
+            result.innerText= "Draw";
+        };
+    };
 
     const resetGame = () =>{
         location.reload();
