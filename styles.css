@@ -13,12 +13,6 @@ body{
     gap: 20px;
 }
 
-.options{
-    display: flex;
-    justify-content: space-between;
-    width: 754px;
-}
-
 button{
     padding: 10px 20px;
     border-radius: 8px;

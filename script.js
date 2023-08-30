@@ -5,7 +5,7 @@ const gameBoardModule= (() => {
     const createPlayer = (name, marker) => {
         return {name, marker};
     };
-    // make buttons to pick marker
+    
     const playerOne= createPlayer("Player One", "X");
     const playerTwo= createPlayer("Player Two", "O");
 
