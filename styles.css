@@ -84,5 +84,9 @@ button{
 }
 
 .result{
-    font-size: 2rem;
+    font-size: 4rem;
+}
+
+.squares:hover{
+    background-color: var(--secondary);
 }
